@@ -1,0 +1,1226 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Museo Virtual | Revolución China</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #090909;
+    color: #eeeeee;
+    line-height: 1.7;
+}
+
+/* ================= PORTADA ================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+
+    background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.88)),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Mao%20Zedong%20in%201949.png")
+        center / cover no-repeat;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero small {
+    color: #d4af37;
+    letter-spacing: 4px;
+    font-size: 14px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(42px, 7vw, 82px);
+    margin: 20px 0;
+    color: #fff;
+}
+
+.hero h2 {
+    font-weight: normal;
+    color: #d4af37;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #ddd;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 13px 28px;
+    border: 1px solid #d4af37;
+    color: #d4af37;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #d4af37;
+    color: #111;
+}
+
+/* ================= MENU ================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(10,10,10,.96);
+    border-bottom: 1px solid #333;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #d4af37;
+}
+
+/* ================= GENERAL ================= */
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title span {
+    color: #d4af37;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.section-title h2 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+/* ================= INTRODUCCIÓN ================= */
+
+.intro {
+    background: #111;
+}
+
+.intro-box {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.year {
+    background: #151515;
+    border: 1px solid #333;
+    padding: 22px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.year:hover {
+    border-color: #d4af37;
+    transform: translateY(-4px);
+}
+
+.year strong {
+    display: block;
+    color: #d4af37;
+    font-size: 25px;
+}
+
+.year p {
+    font-size: 13px;
+    color: #bbb;
+}
+
+#fechaInfo {
+    min-height: 30px;
+}
+
+/* ================= SALAS ================= */
+
+.room {
+    margin-bottom: 90px;
+    background: #101010;
+    border: 1px solid #292929;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
+.room-head {
+    padding: 25px 30px;
+    border-bottom: 1px solid #292929;
+    background: linear-gradient(90deg, #151515, #101010);
+}
+
+.room-number {
+    color: #d4af37;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.room-head h2 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-top: 5px;
+}
+
+.room-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+}
+
+.room-image {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    background: #222;
+    border: 1px solid #333;
+}
+
+.image-caption {
+    font-size: 12px;
+    color: #999;
+    margin-top: 8px;
+}
+
+.text h3 {
+    color: #d4af37;
+    margin: 18px 0 7px;
+    font-size: 17px;
+}
+
+.text h3:first-child {
+    margin-top: 0;
+}
+
+.text p {
+    color: #ddd;
+}
+
+/* ================= PROPAGANDA ================= */
+
+.analysis {
+    margin-top: 25px;
+    padding: 20px;
+    background: #151515;
+    border-left: 3px solid #a51d1d;
+}
+
+.analysis strong {
+    color: #fff;
+}
+
+/* ================= AUDIO ================= */
+
+.audio-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: #171717;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.audio-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.audio-buttons button {
+    background: #d4af37;
+    color: #111;
+    border: 0;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.audio-buttons button:hover {
+    background: #fff;
+}
+
+/* ================= REFLEXIÓN ================= */
+
+.reflection {
+    padding: 25px;
+    margin-top: 25px;
+    border: 1px solid #5d1b1b;
+    background: #180d0d;
+    border-radius: 10px;
+}
+
+.reflection h3 {
+    color: #e2b94f;
+    margin-bottom: 8px;
+}
+
+/* ================= SALA FINAL ================= */
+
+.final {
+    text-align: center;
+    padding: 100px 20px;
+    background:
+        radial-gradient(circle at center, #2b1717 0%, #090909 65%);
+}
+
+.final h2 {
+    font-family: Georgia, serif;
+    font-size: 45px;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+.final p {
+    max-width: 700px;
+    margin: auto;
+    color: #ccc;
+}
+
+/* ================= NOMBRES ================= */
+
+.members {
+    text-align: center;
+    padding: 15px 10px 25px;
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.members span {
+    margin: 0 5px;
+}
+
+/* ================= MENSAJE DE ERROR DE IMAGEN ================= */
+
+.image-error {
+    height: 390px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #181818;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #999;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 800px) {
+
+    .room-content {
+        grid-template-columns: 1fr;
+    }
+
+    .room-image,
+    .image-error {
+        height: 300px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 4px 6px;
+    }
+
+    .final h2 {
+        font-size: 35px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= PORTADA ================= -->
+
+<header class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <small>MUSEO VIRTUAL DE HISTORIA</small>
+
+        <h1>La Revolución China</h1>
+
+        <h2>De la caída del Imperio a la República Popular</h2>
+
+        <p>
+            Un recorrido histórico por los principales acontecimientos de
+            China durante la primera mitad del siglo XX y por la construcción
+            de la imagen de Mao Zedong mediante la propaganda política.
+        </p>
+
+        <a href="#introduccion" class="btn">
+            ENTRAR AL MUSEO
+        </a>
+
+    </div>
+
+</header>
+
+<!-- ================= MENU ================= -->
+
+<nav>
+
+    <a href="#inicio">Inicio</a>
+    <a href="#introduccion">Introducción</a>
+    <a href="#timeline">Línea del tiempo</a>
+    <a href="#sala1">Sala 1</a>
+    <a href="#sala2">Sala 2</a>
+    <a href="#sala3">Sala 3</a>
+    <a href="#sala4">Sala 4</a>
+    <a href="#sala5">Sala 5</a>
+    <a href="#sala6">Sala 6</a>
+
+</nav>
+
+<!-- ================= INTRODUCCIÓN ================= -->
+
+<section class="intro" id="introduccion">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>BIENVENIDA</span>
+            <h2>Introducción</h2>
+        </div>
+
+        <div class="intro-box">
+
+            <p>
+                La Revolución China fue un proceso político y militar
+                desarrollado durante décadas y que culminó en 1949 con la
+                proclamación de la República Popular China.
+            </p>
+
+            <br>
+
+            <p>
+                En este museo recorremos algunos de los acontecimientos más
+                importantes y observamos cómo la propaganda contribuyó a
+                representar a Mao Zedong como una figura central del nuevo
+                Estado y de la revolución.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TIMELINE ================= -->
+
+<section id="timeline">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>RECORRIDO HISTÓRICO</span>
+            <h2>Línea del tiempo</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="year" onclick="mostrarFecha('1911')">
+                <strong>1911</strong>
+                <p>Caída de la dinastía Qing</p>
+            </div>
+
+            <div class="year" onclick="mostrarFecha('1921')">
+                <strong>1921</strong>
+                <p>Fundación del Partido Comunista Chino</p>
+            </div>
+
+            <div class="year" onclick="mostrarFecha('1937')">
+                <strong>1937</strong>
+                <p>Guerra contra Japón</p>
+            </div>
+
+            <div class="year" onclick="mostrarFecha('1949')">
+                <strong>1949</strong>
+                <p>Proclamación de la República Popular</p>
+            </div>
+
+            <div class="year" onclick="mostrarFecha('1966')">
+                <strong>1966</strong>
+                <p>Comienzo de la Revolución Cultural</p>
+            </div>
+
+            <div class="year" onclick="mostrarFecha('1976')">
+                <strong>1976</strong>
+                <p>Muerte de Mao Zedong</p>
+            </div>
+
+        </div>
+
+        <div id="fechaInfo"></div>
+
+    </div>
+
+</section>
+
+<!-- ================= SALA 1 ================= -->
+
+<section class="container" id="sala1">
+
+<div class="room">
+
+    <div class="room-head">
+        <div class="room-number">SALA 01</div>
+        <h2>La caída del Imperio</h2>
+    </div>
+
+    <div class="room-content">
+
+        <div>
+
+            <img
+                class="room-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Puyi%20%281922%29.jpg"
+                alt="Puyi en 1922"
+                onerror="imagenError(this)"
+            >
+
+            <div class="image-caption">
+                Puyi, último emperador de China.
+            </div>
+
+        </div>
+
+        <div class="text">
+
+            <h3>¿Qué ocurrió?</h3>
+
+            <p>
+                En 1911 comenzó la Revolución Xinhai, que terminó con la
+                dinastía Qing. En 1912 se estableció la República de China.
+            </p>
+
+            <h3>Objeto simbólico</h3>
+
+            <p>
+                El objeto simbólico de esta sala es la corona imperial,
+                utilizada para representar el final del sistema monárquico.
+            </p>
+
+            <div class="analysis">
+                <strong>Lectura de la imagen</strong>
+
+                <p>
+                    Puyi aparece como representante de la última etapa del
+                    sistema imperial. La imagen permite observar la distancia
+                    entre la antigua monarquía y los cambios políticos que
+                    siguieron.
+                </p>
+            </div>
+
+            <div class="reflection">
+
+                <h3>Conclusión crítica</h3>
+
+                <p>
+                    La caída del Imperio modificó la organización política de
+                    China, pero no solucionó inmediatamente los conflictos
+                    sociales y políticos del país.
+                </p>
+
+            </div>
+
+            <div class="audio-box">
+
+                <strong>Audioguía</strong>
+
+                <p>
+                    En esta primera sala observamos el final del Imperio
+                    chino. La caída de la dinastía Qing abrió una nueva etapa
+                    política, marcada por conflictos internos y diferentes
+                    proyectos para el futuro del país.
+                </p>
+
+                <div class="audio-buttons">
+
+                    <button onclick="hablar(this.parentElement.parentElement)">
+                        ▶ Reproducir
+                    </button>
+
+                    <button onclick="speechSynthesis.pause()">
+                        ⏸ Pausar
+                    </button>
+
+                    <button onclick="speechSynthesis.cancel()">
+                        ⏹ Detener
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= SALA 2 ================= -->
+
+<section class="container" id="sala2">
+
+<div class="room">
+
+    <div class="room-head">
+
+        <div class="room-number">SALA 02</div>
+
+        <h2>La Guerra Civil China</h2>
+
+    </div>
+
+    <div class="room-content">
+
+        <div>
+
+            <img
+                class="room-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/PLA%20Enters%20Peking.jpg"
+                alt="Ejército Popular de Liberación entrando en Pekín"
+                onerror="imagenError(this)"
+            >
+
+            <div class="image-caption">
+                Entrada de las fuerzas comunistas en Pekín, 1949.
+            </div>
+
+        </div>
+
+        <div class="text">
+
+            <h3>El conflicto</h3>
+
+            <p>
+                El Partido Comunista Chino y el Kuomintang fueron los
+                principales protagonistas de la guerra civil. El conflicto
+                tuvo distintas etapas y estuvo interrumpido por la guerra
+                contra Japón.
+            </p>
+
+            <h3>Objeto simbólico</h3>
+
+            <p>
+                Un mapa militar representa los territorios controlados por
+                los distintos grupos durante el conflicto.
+            </p>
+
+            <div class="analysis">
+
+                <strong>Lectura de la imagen</strong>
+
+                <p>
+                    La imagen muestra a soldados del Ejército Popular de
+                    Liberación entrando en Pekín. Las fotografías de este
+                    tipo podían presentar el avance militar como parte de un
+                    proceso histórico de transformación política.
+                </p>
+
+            </div>
+
+            <div class="reflection">
+
+                <h3>Conclusión crítica</h3>
+
+                <p>
+                    Las fotografías militares muestran solamente una parte
+                    del conflicto. También existieron consecuencias sociales,
+                    económicas y humanas que no aparecen necesariamente en
+                    una imagen oficial.
+                </p>
+
+            </div>
+
+            <div class="audio-box">
+
+                <strong>Audioguía</strong>
+
+                <p>
+                    La guerra civil enfrentó a fuerzas nacionalistas y
+                    comunistas. En 1949, las fuerzas comunistas lograron
+                    controlar gran parte del territorio continental y el
+                    conflicto terminó con la creación de la República
+                    Popular China.
+                </p>
+
+                <div class="audio-buttons">
+
+                    <button onclick="hablar(this.parentElement.parentElement)">
+                        ▶ Reproducir
+                    </button>
+
+                    <button onclick="speechSynthesis.pause()">
+                        ⏸ Pausar
+                    </button>
+
+                    <button onclick="speechSynthesis.cancel()">
+                        ⏹ Detener
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= SALA 3 ================= -->
+
+<section class="container" id="sala3">
+
+<div class="room">
+
+    <div class="room-head">
+
+        <div class="room-number">SALA 03</div>
+
+        <h2>1949: nace la República Popular China</h2>
+
+    </div>
+
+    <div class="room-content">
+
+        <div>
+
+            <img
+                class="room-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mao%20Zedong%20in%201949.png"
+                alt="Mao Zedong en Tiananmen en 1949"
+                onerror="imagenError(this)"
+            >
+
+            <div class="image-caption">
+                Mao Zedong en Tiananmen durante la proclamación de 1949.
+            </div>
+
+        </div>
+
+        <div class="text">
+
+            <h3>El 1 de octubre de 1949</h3>
+
+            <p>
+                Mao Zedong proclamó la República Popular China desde la
+                Puerta de Tiananmen, en Pekín.
+            </p>
+
+            <h3>Objeto simbólico</h3>
+
+            <p>
+                Una bandera roja representa el nuevo Estado y el proyecto
+                político que comenzaba en 1949.
+            </p>
+
+            <div class="analysis">
+
+                <strong>Lectura de la imagen</strong>
+
+                <p>
+                    Mao ocupa una posición central y aparece ante una gran
+                    multitud. La composición refuerza la relación visual
+                    entre el dirigente, el nuevo Estado y la población.
+                </p>
+
+            </div>
+
+            <div class="reflection">
+
+                <h3>Conclusión crítica</h3>
+
+                <p>
+                    Una fotografía histórica registra un acontecimiento, pero
+                    también puede adquirir un significado político cuando se
+                    utiliza para construir una memoria oficial.
+                </p>
+
+            </div>
+
+            <div class="audio-box">
+
+                <strong>Audioguía</strong>
+
+                <p>
+                    El año 1949 es fundamental para la historia de China.
+                    Mao Zedong anunció la creación de la República Popular
+                    China. Las imágenes de ese momento ayudaron a construir
+                    una representación pública del nuevo poder político.
+                </p>
+
+                <div class="audio-buttons">
+
+                    <button onclick="hablar(this.parentElement.parentElement)">
+                        ▶ Reproducir
+                    </button>
+
+                    <button onclick="speechSynthesis.pause()">
+                        ⏸ Pausar
+                    </button>
+
+                    <button onclick="speechSynthesis.cancel()">
+                        ⏹ Detener
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= SALA 4 ================= -->
+
+<section class="container" id="sala4">
+
+<div class="room">
+
+    <div class="room-head">
+
+        <div class="room-number">SALA 04</div>
+
+        <h2>Mao y la construcción de su imagen</h2>
+
+    </div>
+
+    <div class="room-content">
+
+        <div>
+
+            <img
+                class="room-image"
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mao%20Zedong%20in%201949.png"
+                alt="Mao Zedong"
+                onerror="imagenError(this)"
+            >
+
+            <div class="image-caption">
+                Imagen de Mao Zedong en 1949.
+            </div>
+
+        </div>
+
+        <div class="text">
+
+            <h3>La imagen del líder</h3>
+
+            <p>
+                Durante las décadas posteriores a 1949, Mao fue representado
+                repetidamente en carteles, fotografías, libros y otros medios
+                de comunicación.
+            </p>
+
+            <h3>Recursos de la propaganda</h3>
+
+            <p>
+                Entre los recursos utilizados aparecen los retratos
+                destacados, colores intensos, multitudes, símbolos políticos,
+                consignas y composiciones que colocan al líder en una posición
+                central.
+            </p>
+
+            <h3>¿Qué personas aparecen?</h3>
+
+            <p>
+                En muchas imágenes aparecen Mao, trabajadores, campesinos,
+                soldados y jóvenes.
+            </p>
+
+            <h3>¿Qué valores transmite?</h3>
+
+            <p>
+                Las imágenes podían asociar al líder con unidad, revolución,
+                disciplina, participación colectiva y transformación social.
+            </p>
+
+            <div class="analysis">
+
+                <strong>¿Qué queda afuera?</strong>
+
+                <p>
+                    Una imagen propagandística selecciona aquello que quiere
+                    destacar. Por eso, aspectos como conflictos, críticas,
+                    dificultades económicas o diferentes opiniones pueden no
+                    aparecer.
+                </p>
+
+            </div>
+
+            <div class="reflection">
+
+                <h3>Pregunta para pensar</h3>
+
+                <p>
+                    ¿Cómo cambia nuestra percepción de una persona cuando
+                    solamente vemos imágenes que la presentan como símbolo
+                    de una revolución?
+                </p>
+
+            </div>
+
+            <div class="audio-box">
+
+                <strong>Audioguía</strong>
+
+                <p>
+                    En esta sala observamos cómo se construyó visualmente la
+                    imagen de Mao. La propaganda no solamente transmitía
+                    información: seleccionaba símbolos, colores y escenas para
+                    presentar una determinada imagen del líder y de la
+                    sociedad.
+                </p>
+
+                <div class="audio-buttons">
+
+                    <button onclick="hablar(this.parentElement.parentElement)">
+                        ▶ Reproducir
+                    </button>
+
+                    <button onclick="speechSynthesis.pause()">
+                        ⏸ Pausar
+                    </button>
+
+                    <button onclick="speechSynthesis.cancel()">
+                        ⏹ Detener
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= SALA 5 ================= -->
+
+<section class="container" id="sala5">
+
+<div class="room">
+
+    <div class="room-head">
+
+        <div class="room-number">SALA 05</div>
+
+        <h2>La Revolución Cultural y la propaganda</h2>
+
+    </div>
+
+    <div class="room-content">
+
+        <div>
+
+            <img
+                class="room-image"
+                src="https://cdn.loc.gov/service/pnp/cph/3g00000/3g03000/3g03300/3g03376v.jpg"
+                alt="Cartel de propaganda de Mao"
+                onerror="imagenError(this)"
+            >
+
+            <div class="image-caption">
+                Cartel de propaganda de la Revolución Cultural, 1967.
+            </div>
+
+        </div>
+
+        <div class="text">
+
+            <h3>1966–1976</h3>
+
+            <p>
+                La Revolución Cultural comenzó en 1966 y se desarrolló hasta
+                1976. Durante este período, la propaganda tuvo una presencia
+                importante en la vida pública.
+            </p>
+
+            <h3>¿Qué aparece en el cartel?</h3>
+
+            <p>
+                Los carteles podían mostrar a Mao en una posición central,
+                acompañado por multitudes, trabajadores, campesinos,
+                soldados o jóvenes.
+            </p>
+
+            <h3>¿Cómo se representa a Mao?</h3>
+
+            <p>
+                En numerosos carteles aparece idealizado y situado por encima
+                o en el centro de la composición.
+            </p>
+
+            <h3>Objeto simbólico</h3>
+
+            <p>
+                El <em>Libro Rojo</em>, que reunía citas de Mao, se convirtió
+                en uno de los símbolos más reconocibles de este período.
+            </p>
+
+            <div class="analysis">
+
+                <strong>Mensaje y recursos</strong>
+
+                <p>
+                    La propaganda utilizaba colores llamativos, símbolos,
+                    multitudes, consignas y una representación positiva del
+                    liderazgo. El objetivo comunicativo era reforzar
+                    determinados valores políticos y sociales.
+                </p>
+
+            </div>
+
+            <div class="reflection">
+
+                <h3>Conclusión crítica</h3>
+
+                <p>
+                    La propaganda permite observar cómo una sociedad puede ser
+                    representada desde una determinada perspectiva. Analizar
+                    qué muestra una imagen y qué deja afuera ayuda a
+                    comprender su función histórica.
+                </p>
+
+            </div>
+
+            <div class="audio-box">
+
+                <strong>Audioguía</strong>
+
+                <p>
+                    Durante la Revolución Cultural, los carteles y otros
+                    medios visuales estuvieron presentes en espacios públicos
+                    y en la vida cotidiana. La figura de Mao apareció
+                    repetidamente como símbolo central. Por eso, estudiar
+                    estas imágenes permite relacionar propaganda, poder y
+                    vida cotidiana.
+                </p>
+
+                <div class="audio-buttons">
+
+                    <button onclick="hablar(this.parentElement.parentElement)">
+                        ▶ Reproducir
+                    </button>
+
+                    <button onclick="speechSynthesis.pause()">
+                        ⏸ Pausar
+                    </button>
+
+                    <button onclick="speechSynthesis.cancel()">
+                        ⏹ Detener
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= SALA 6 ================= -->
+
+<section class="final" id="sala6">
+
+    <div class="section-title">
+
+        <span>SALA 06</span>
+
+        <h2>Final del recorrido</h2>
+
+    </div>
+
+    <h2>Gracias por visitar nuestro museo</h2>
+
+    <p>
+        Llegamos al final de nuestro recorrido por la Revolución China.
+        A través de las diferentes salas observamos acontecimientos
+        históricos y analizamos cómo las imágenes de propaganda podían
+        construir determinadas representaciones del poder y de sus líderes.
+    </p>
+
+    <br>
+
+    <p>
+        Esperamos que este museo haya servido para conocer mejor este
+        proceso histórico y para observar las imágenes históricas de una
+        manera crítica.
+    </p>
+
+    <a href="#inicio" class="btn">
+        VOLVER AL INICIO
+    </a>
+
+</section>
+
+<!-- ================= NOMBRES ================= -->
+
+<footer class="members">
+
+    <span>SEBAS ALARCON</span>
+    <span>•</span>
+    <span>DYLAN GUAN</span>
+    <span>•</span>
+    <span>LEANDRO MOJICA</span>
+    <span>•</span>
+    <span>VICTORIA GIRI</span>
+    <span>•</span>
+    <span>MARTINA GUERRERO</span>
+
+</footer>
+
+<script>
+
+/* ================= TIMELINE ================= */
+
+function mostrarFecha(anio) {
+
+    const info = document.getElementById("fechaInfo");
+
+    const datos = {
+
+        "1911":
+        "1911: comenzó la Revolución Xinhai y terminó la dinastía Qing.",
+
+        "1921":
+        "1921: fue fundado el Partido Comunista Chino.",
+
+        "1937":
+        "1937: comenzó la segunda guerra sino-japonesa a gran escala.",
+
+        "1949":
+        "1949: Mao Zedong proclamó la República Popular China.",
+
+        "1966":
+        "1966: comenzó la Revolución Cultural.",
+
+        "1976":
+        "1976: murió Mao Zedong y terminó la Revolución Cultural."
+
+    };
+
+    info.textContent = datos[anio] || "";
+
+}
+
+/* ================= AUDIO ================= */
+
+function hablar(elemento) {
+
+    speechSynthesis.cancel();
+
+    const texto = elemento.innerText;
+
+    const mensaje = new SpeechSynthesisUtterance(texto);
+
+    mensaje.lang = "es-ES";
+    mensaje.rate = 0.9;
+    mensaje.pitch = 1;
+
+    speechSynthesis.speak(mensaje);
+}
+
+/* ================= ERROR DE IMAGEN ================= */
+
+function imagenError(imagen) {
+
+    const contenedor = document.createElement("div");
+
+    contenedor.className = "image-error";
+
+    contenedor.innerHTML =
+        "⚠️<br><br>No se pudo cargar esta imagen.<br>" +
+        "La información de la sala continúa disponible.";
+
+    imagen.replaceWith(contenedor);
+}
+
+/* ================= DETENER AUDIO ================= */
+
+window.addEventListener("beforeunload", function () {
+
+    speechSynthesis.cancel();
+
+});
+
+</script>
+
+</body>
+</html>
+```
